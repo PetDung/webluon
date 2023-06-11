@@ -15,18 +15,39 @@
     <div class="row sticky-top header">
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <a class="navbar-brand" href="/">Lươn Chiên Hoa Xuân</a>
+          <button class="navbar-toggler icon-bar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+
+                    </span>
           </button>
+
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link" href="#">Features</a>
-              <a class="nav-link" href="#">Pricing</a>
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link" href="/.">Sản Phẩm</a>
+              <a class="nav-link" href="/admin">Admin</a>
             </div>
           </div>
+          <button class="cart" hidden>
+            <i class="click-cart fa-solid fa-cart-shopping"></i>
+            <div class="quanty">0</div>
+            <div class="show-cart ">
+              <div class="total">Giỏ hàng của tôi</div>
+              <div class="list-product">
+              </div>
+              <div class="total-price">
+                <div class="price-item">
+                  Tạm Tính:
+                  <span class="sum-price">1000</span>
+                </div>
+                <div class="btn-pay">
+                  <a href="/"><input class="btn" type="button" value="Xem Giỏ Hàng"></a>
+                  <a href="/checkout"><input class="btn bg-green"  type="button" value="Thanh Toán"></a>
+                </div>
+              </div>
+            </div>
+          </button>
         </div>
       </nav>
     </div>

@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 public class Admin {
     @GetMapping("")
     public String index(){
-        return "Admin" ;
+        return "admin" ;
     }
     @Autowired
     ProductRepository productRepository ;
     @PostMapping(path="/post-product", consumes = "application/x-www-form-urlencoded")
     public String post(ProductEntity productEntity){
         productRepository.save(productEntity);
-        return "Admin";
+        return "admin";
     }
 }
