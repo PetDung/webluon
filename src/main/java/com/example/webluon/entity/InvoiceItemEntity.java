@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class InvoiceItemEntity extends BaseEntity{
+public class    InvoiceItemEntity extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name ="product_id")

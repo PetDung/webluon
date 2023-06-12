@@ -16,7 +16,7 @@ public interface ProductRepository extends CrudRepository<ProductEntity, Long> {
    @Override
    Optional<ProductEntity> findById(Long id);
 
-   @Query("SELECT DISTINCT p, i.quanty" +
+   @Query("SELECT DISTINCT p, i.quanty " +
            "FROM ProductEntity p inner JOIN  FETCH p.listInvoice i inner JOIN fetch i.invoices ii " +
            "WHERE ii.id = :id")
    List<Object[]> findOrderedProducts(@Param("id") Long id);
