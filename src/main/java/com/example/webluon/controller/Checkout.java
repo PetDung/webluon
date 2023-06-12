@@ -35,15 +35,8 @@ public class Checkout {
 
     @PostMapping(path="/order", consumes = "application/json")
     public String  order(@RequestBody Order order){
-
-        Optional<InvoicesEntity> isInvoices = invoicesRepository.findByNumberPhone(order.getNumberPhone());
-        InvoicesEntity invoices;
-        if(isInvoices.isEmpty()){
-            invoices = new InvoicesEntity();
-            invoices.setNumberPhone(order.getNumberPhone());
-        }else{
-            invoices = isInvoices.get();
-        }
+        InvoicesEntity invoices = new InvoicesEntity();
+        invoices.setNumberPhone(order.getNumberPhone());
         invoices.setNameCustom(order.getName());
         invoices.setEmail(order.getEmail());
         invoices.setType(order.getType());
@@ -61,8 +54,6 @@ public class Checkout {
             invoiceItemEntity.setIsPay(0);
             invoiceItemRepository.save(invoiceItemEntity);
         }
-//        List<ProductEntity> l = invoicesRepository.findAllProductByInvoiceId(3L);
-//        System.out.println(l.toString());
         return "Home";
     }
 }

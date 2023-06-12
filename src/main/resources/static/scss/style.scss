@@ -250,12 +250,20 @@ img{
         background: #eee;
         margin-top: -45px;
         padding: 10px;
-        transform: translateY(55px);
+        transform: translateY(0);
         transition: transform  0.5s ease-in-out;
         .action{
-            display: flex;
+            display: none;
             justify-content: space-evenly;
 
+        }
+        @media (min-width: 768px){
+            .action{
+                display: flex;
+            }
+            &{
+                transform: translateY(55px);
+            }
         }
         .btn{
             border: 1px solid crimson;
@@ -326,3 +334,4 @@ img{
         }
     }
 }
+

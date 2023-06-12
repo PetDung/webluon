@@ -12,4 +12,5 @@ import java.util.Optional;
 @Repository
 public interface InvoicesRepository extends JpaRepository<InvoicesEntity,Long> {
     Optional<InvoicesEntity> findByNumberPhone (String numberPhone);
+    List<InvoicesEntity> findAll ();
 }
