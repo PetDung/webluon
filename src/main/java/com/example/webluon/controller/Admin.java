@@ -21,14 +21,14 @@ import java.util.List;
 public class Admin {
     @GetMapping("")
     public String index(){
-        return "admin" ;
+        return "Admin" ;
     }
     @Autowired
     ProductRepository productRepository ;
     @PostMapping(path="/post-product", consumes = "application/x-www-form-urlencoded")
     public String post(ProductEntity productEntity){
         productRepository.save(productEntity);
-        return "admin";
+        return "Admin";
     }
 
     @Autowired
