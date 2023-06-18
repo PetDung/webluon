@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link href="/icon/fontawesome-free-6.4.0-web/css/fontawesome.css" rel="stylesheet">
-  <link href="/icon/fontawesome-free-6.4.0-web/css/brands.css" rel="stylesheet">
-  <link href="/icon/fontawesome-free-6.4.0-web/css/solid.css" rel="stylesheet">
-  <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
-<!--  <link rel="stylesheet" href="css/style.css">-->
-  <title>Admin</title>
-</head>
-<body>
+<style>
+  .wrapper-header{
+    width: 100%;
+    background: #fff;
+    z-index: 9999999;
+  }
+</style>
+<div class="wrapper-header">
   <div class="container">
     <div class="row sticky-top header">
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">Lươn Chiên Hoa Xuân</a>
+          <a class="navbar-brand" href="/">Hoa Xuân Food</a>
           <button class="navbar-toggler icon-bar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
 
@@ -24,13 +19,15 @@
 
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
-              <a class="nav-link" href="/.">Sản Phẩm</a>
+              <a class="nav-link active" aria-current="page" href="/">Trang Chủ</a>
+              <a class="nav-link" href="/product">Sản Phẩm</a>
+              <a class="nav-link" href="/product">Về Chúng Tôi</a>
+              <a class="nav-link" href="/product">Blog</a>
+              <a class="nav-link" href="/cart">Giỏ Hàng</a>
               <a class="nav-link" href="/admin">Admin</a>
-              <a class="nav-link" href="/admin/order">Đơn Hàng</a>
             </div>
           </div>
-          <button class="cart" hidden>
+          <button class="cart">
             <i class="click-cart fa-solid fa-cart-shopping"></i>
             <div class="quanty">0</div>
             <div class="show-cart ">
@@ -43,7 +40,7 @@
                   <span class="sum-price">1000</span>
                 </div>
                 <div class="btn-pay">
-                  <a href="/"><input class="btn" type="button" value="Xem Giỏ Hàng"></a>
+                  <a href="/cart"><input class="btn" type="button" value="Xem Giỏ Hàng"></a>
                   <a href="/checkout"><input class="btn bg-green"  type="button" value="Thanh Toán"></a>
                 </div>
               </div>
@@ -52,9 +49,5 @@
         </div>
       </nav>
     </div>
-    <div class="row">
-      <div class="col">
-      </div>
   </div>
-</body>
-</html>
+</div>

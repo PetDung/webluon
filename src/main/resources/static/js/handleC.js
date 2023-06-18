@@ -71,7 +71,6 @@ function  addCartProduct(id,name,price,quanty=1){
         count.fill(0);
         listProduct.push(product);
         count[product.id]+= quanty;
-        console.log(typeof 3);
     }else{
         let tempCount = new Array(length);
         tempCount.fill(0);
@@ -132,15 +131,13 @@ products.forEach(product=>{
 
 let close =document.querySelector(".icon-clear")
 function handleDelete(elemen){
-    console.log(elemen)
     removeProduct(elemen.getAttribute("data-id"));
 }
 
-// handlerClick Cart
+//handlerClick Cart
 let cart = document.querySelector(".click-cart")
 cart.onclick=()=>{
-    console.log(cart);
-    document.querySelector(".show-cart").classList.toggle("show");
+    document.querySelector(".show-cart").classList.toggle("showCart");
 }
 let add = document.querySelector("#add");
 if(add){
@@ -153,5 +150,3 @@ if(add){
         addCartProduct(id,name,price,quanty);
     }
 }
-Fancybox.bind('[data-fancybox="images"]', {
-});

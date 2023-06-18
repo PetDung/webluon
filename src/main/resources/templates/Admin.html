@@ -6,76 +6,87 @@
   <link href="/icon/fontawesome-free-6.4.0-web/css/fontawesome.css" rel="stylesheet">
   <link href="/icon/fontawesome-free-6.4.0-web/css/brands.css" rel="stylesheet">
   <link href="/icon/fontawesome-free-6.4.0-web/css/solid.css" rel="stylesheet">
+
   <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/sideber.css">
 <!--  <link rel="stylesheet" href="css/style.css">-->
   <title>Admin</title>
 </head>
 <body>
-  <div class="container">
-    <div class="row sticky-top header">
-      <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">Lươn Chiên Hoa Xuân</a>
-          <button class="navbar-toggler icon-bar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<div id="viewport">
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <header>
+      <a href="#">Quản Lý</a>
+    </header>
+  </div>
+  <!-- Content -->
+  <div id="content">
+    <div class="container">
+      <div class="row sticky-top header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">Lươn Chiên Hoa Xuân</a>
+            <button class="navbar-toggler icon-bar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
 
                     </span>
-          </button>
+            </button>
 
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
-              <a class="nav-link" href="/.">Sản Phẩm</a>
-              <a class="nav-link" href="/admin">Admin</a>
-              <a class="nav-link" href="/admin/order">Đơn Hàng</a>
-            </div>
-          </div>
-          <button class="cart" hidden>
-            <i class="click-cart fa-solid fa-cart-shopping"></i>
-            <div class="quanty">0</div>
-            <div class="show-cart ">
-              <div class="total">Giỏ hàng của tôi</div>
-              <div class="list-product">
-              </div>
-              <div class="total-price">
-                <div class="price-item">
-                  Tạm Tính:
-                  <span class="sum-price">1000</span>
-                </div>
-                <div class="btn-pay">
-                  <a href="/"><input class="btn" type="button" value="Xem Giỏ Hàng"></a>
-                  <a href="/checkout"><input class="btn bg-green"  type="button" value="Thanh Toán"></a>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a class="nav-link" href="/.">Sản Phẩm</a>
+                <a class="nav-link" href="/admin">Admin</a>
+                <a class="nav-link" href="/admin/order">Đơn Hàng</a>
               </div>
             </div>
-          </button>
-        </div>
-      </nav>
-    </div>
-    <div class="row">
-      <div class="col">
-        <form action="/admin/post-product" id="post-product" method="POST">
-          <div class="row mb-3">
-            <label  class="col-sm-2 col-form-label col-form-label-sm">Name</label>
-            <div class="col-sm-10">
-              <input type="text"
-                     class="form-control form-control-sm"
-                     placeholder="name"
-                     name="name">
-            </div>
+            <button class="cart" hidden>
+              <i class="click-cart fa-solid fa-cart-shopping"></i>
+              <div class="quanty">0</div>
+              <div class="show-cart ">
+                <div class="total">Giỏ hàng của tôi</div>
+                <div class="list-product">
+                </div>
+                <div class="total-price">
+                  <div class="price-item">
+                    Tạm Tính:
+                    <span class="sum-price">1000</span>
+                  </div>
+                  <div class="btn-pay">
+                    <a href="/"><input class="btn" type="button" value="Xem Giỏ Hàng"></a>
+                    <a href="/checkout"><input class="btn bg-green"  type="button" value="Thanh Toán"></a>
+                  </div>
+                </div>
+              </div>
+            </button>
           </div>
-          <div class="row mb-3">
-            <label
-                   class="col-sm-2 col-form-label col-form-label-sm">So luong</label>
-            <div class="col-sm-10">
-              <input type="number"
-                     class="form-control form-control-sm"
-                     min="0"  placeholder="Soluong"
-                     name="inventoryCount"
-              >
+        </nav>
+      </div>
+      <div class="row">
+        <div class="col">
+          <form action="/admin/post-product" id="post-product" method="POST">
+            <div class="row mb-3">
+              <label  class="col-sm-2 col-form-label col-form-label-sm">Name</label>
+              <div class="col-sm-10">
+                <input type="text"
+                       class="form-control form-control-sm"
+                       placeholder="name"
+                       name="name">
+              </div>
             </div>
-          </div>
-          <div class="form-floating row mb-3">
+            <div class="row mb-3">
+              <label
+                      class="col-sm-2 col-form-label col-form-label-sm">So luong</label>
+              <div class="col-sm-10">
+                <input type="number"
+                       class="form-control form-control-sm"
+                       min="0"  placeholder="Soluong"
+                       name="inventoryCount"
+                >
+              </div>
+            </div>
+            <div class="form-floating row mb-3">
             <textarea class="form-control"
                       placeholder="Leave a comment here"
                       style="height: 100px"
@@ -83,23 +94,25 @@
             >
 
             </textarea>
-            <label >Mo ta</label>
-          </div>
-          <div class="row mb-3">
-            <label
-                   class="col-sm-2 col-form-label col-form-label-sm">Giá</label>
-            <div class="col-sm-10">
-              <input type="number"
-                     class="form-control form-control-sm"
-                     min="0"
-                     placeholder="price"
-                     name="price"
-              >
+              <label >Mo ta</label>
             </div>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-    </div>
+            <div class="row mb-3">
+              <label
+                      class="col-sm-2 col-form-label col-form-label-sm">Giá</label>
+              <div class="col-sm-10">
+                <input type="number"
+                       class="form-control form-control-sm"
+                       min="0"
+                       placeholder="price"
+                       name="price"
+                >
+              </div>
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
   </div>
+</div>
 </body>
 </html>

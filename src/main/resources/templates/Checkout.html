@@ -7,60 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Nền tảng - Kiến thức cơ bản về WEB | Bảng tin</title>
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
-    <!-- Font awesome -->
     <link href="/icon/fontawesome-free-6.4.0-web/css/fontawesome.css" rel="stylesheet">
     <link href="/icon/fontawesome-free-6.4.0-web/css/brands.css" rel="stylesheet">
     <link href="/icon/fontawesome-free-6.4.0-web/css/solid.css" rel="stylesheet">
-
-    <!-- Custom css - Các file css do chúng ta tự viết -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/checkout.css">
 </head>
 
 <body>
 <div class="container-xxl">
-    <div class="row sticky-top header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">Lươn Chiên Hoa Xuân</a>
-                <button class="navbar-toggler icon-bar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon">
-
-                    </span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                        <a class="nav-link" href="/.">Sản Phẩm</a>
-                        <a class="nav-link" href="/admin">Admin</a>
-                    </div>
-                </div>
-                <button class="cart">
-                    <i class="click-cart fa-solid fa-cart-shopping"></i>
-                    <div class="quanty">0</div>
-                    <div class="show-cart ">
-                        <div class="total">Giỏ hàng của tôi</div>
-                        <div class="list-product">
-                        </div>
-                        <div class="total-price">
-                            <div class="price-item">
-                                Tạm Tính:
-                                <span class="sum-price">1000</span>
-                            </div>
-                            <div class="btn-pay">
-                                <a href="/"><input class="btn" type="button" value="Xem Giỏ Hàng"></a>
-                                <a href="/checkout"><input class="btn bg-green"  type="button" value="Thanh Toán"></a>
-                            </div>
-                        </div>
-                    </div>
-                </button>
-            </div>
-        </nav>
-    </div>
+    <div th:insert="Header">
     </div>
     <div class="row main">
         <main role="main">
@@ -148,14 +105,8 @@
         </main>
     </div>
 </div>
-
-
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="/jquery/jquery.js"></script>
 <script  src="bootstrap/bootstrap.min.js"></script>
-<!--<script  src="/js/handleC.js"></script>-->
 <script  src="/js/checkout.js"></script>
 </body>
 

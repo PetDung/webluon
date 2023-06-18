@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+<body>
+<div class="container">
+  <div class="row products">
+    <div class="title col-12 d-flex justify-content-center mb-5"><h1>Sản Phẩm</h1> </div>
+<!--    <div class="row type justify-content-center">-->
+<!--      <div class="col-md-2 text-center type-item">-->
+<!--        <button>Lươn chiên</button>-->
+<!--        <span class="line"></span>-->
+<!--      </div>-->
+<!--      <div class="col-md-2 text-center type-item">-->
+<!--        <button>Lươn xào</button>-->
+<!--        <span class="line"></span>-->
+<!--      </div>-->
+<!--      <div class="col-md-2 text-center type-item">-->
+<!--        <button>Lươn cuộn</button>-->
+<!--        <span class="line"></span>-->
+<!--      </div>-->
+<!--      <div class="col-md-2 text-center type-item">-->
+<!--        <button>Lươn ướp</button>-->
+<!--        <span class="line"></span>-->
+<!--      </div>-->
+<!--    </div>-->
+    <div class="row my-products ">
+      <div class="col-lg-3 col-6 col-md-4" th:each="product : ${listProduct}">
+        <div class="product" >
+          <img src="/img/product.jpg">
+          <div class="info-product">
+            <h5 class="name" th:text="${product.name}"></h5>
+            <p class="price" th:text="${product.price}"></p>
+            <div class="action">
+              <button class="add-cart"><i class="fa-solid fa-cart-plus"></i></button>
+              <button class="btn btn-product">Mua Ngay</button>
+
+            </div>
+          </div>
+          <span class="id" th:data-id="${product.id}"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

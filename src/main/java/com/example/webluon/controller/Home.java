@@ -21,7 +21,8 @@ public class Home {
     public String index(Model mode){
         List<ProductEntity> listProduct = productRepository.findAll();
         mode.addAttribute("listProduct", listProduct);
-        return  "Home";
+        mode.addAttribute("page","Home");
+        return  "Common";
     }
     @GetMapping("/{id}")
     public String product(@PathVariable Long id,Model mode){
@@ -29,6 +30,7 @@ public class Home {
         mode.addAttribute("product",productEntity.get());
         List<ProductEntity> listProduct = productRepository.findAll();
         mode.addAttribute("listProduct", listProduct);
-        return "InfoProduct" ;
+        mode.addAttribute("page","InfoProduct");
+        return  "Common";
     }
 }
