@@ -79,7 +79,6 @@ img{
         padding: 5px;
         border-radius: 16px;
         display: none;
-
         .total{
             position: absolute;
             top: 0;
@@ -182,6 +181,11 @@ img{
     .showCart{
          display: block !important;
      }
+    @media (max-width: 576px) {
+        .show-cart{
+            right: -100px;
+        }
+    }
 }
 
 .sum-price{
@@ -333,4 +337,3 @@ img{
         }
     }
 }
-
