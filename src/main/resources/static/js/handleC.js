@@ -150,3 +150,6 @@ if(add){
         addCartProduct(id,name,price,quanty);
     }
 }
+document.addEventListener('gesturestart', function (e) {
+    e.preventDefault();
+});

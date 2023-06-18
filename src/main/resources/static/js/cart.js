@@ -53,7 +53,7 @@ let renderListProduct =()=>{
                     </div>
                 </div>
                 <div class="remove-product">
-                    <i class="fa-solid fa-trash"></i>
+                    <i data-id=${product.id} class="fa-solid fa-trash" onclick="removeProduct(this)"></i>
                 </div>
             </div>                       
                `
@@ -85,6 +85,13 @@ let minus =(e)=>{
         changeQuanty(id,currentNumber)
     }
 }
+
+let removeProduct =(e)=>{
+    let id = e.getAttribute("data-id")
+    changeQuanty(id,0);
+
+}
+
 let changeQuanty=(id,quanty)=>{
     id=parseInt(id);
     quanty= parseInt(quanty);
@@ -93,11 +100,26 @@ let changeQuanty=(id,quanty)=>{
     let count = dataOrders.count;
     let sumPrice = dataOrders.sumPrice;
     let total = dataOrders.total;
-    total = (total -  count[id]) + quanty;
-    listProduct.forEach(product=>{
-        if(product.id === id ) sumPrice = (sumPrice - product.price*count[id]) + (product.price*quanty) ;
-    })
-    count[id] = quanty;
+    if(quanty===0){
+        let index;
+        for(let i =0 ; i<listProduct.length; i++){
+            if(listProduct[i].id === id  ) index = i;
+        }
+        let item =listProduct[index];
+        sumPrice -= item.price * count[id];
+        total -=count[id];
+        count[id] =0;
+        listProduct.splice(index,1);
+    }
+
+    else{
+        total = (total -  count[id]) + quanty;
+        listProduct.forEach(product=>{
+            if(product.id === id ) sumPrice = (sumPrice - product.price*count[id]) + (product.price*quanty) ;
+        })
+        count[id] = quanty;
+    }
+    localStorage.setItem("listProduct",JSON.stringify(listProduct));
     localStorage.setItem("count",JSON.stringify(count));
     localStorage.setItem("sumPrice",JSON.stringify(sumPrice));
     localStorage.setItem("total",JSON.stringify(total));
