@@ -150,6 +150,8 @@ if(add){
         addCartProduct(id,name,price,quanty);
     }
 }
-document.addEventListener('gesturestart', function (e) {
-    e.preventDefault();
+button.addEventListener('touchstart', function(event) {
+  if (event.touches.length > 1) {
+    event.preventDefault();
+  }
 });
