@@ -118,9 +118,11 @@ formCheckout.onsubmit =(e)=>{
         }else isSubmit=true;
     })
     let listProduct = JSON.parse(localStorage.getItem("listProduct"));
-    if(listProduct.length < 1) {
+    if(!listProduct || listProduct.length< 1) {
         isSubmit =false;
-        alert("Vui lòng chọn sản phẩm để mua. Giỏ hàng trống!");
+        let log = document.querySelector(".log");
+        log.innerHTML="Giỏ hàng trống!";
+        log.style.color="red";
     }
     if(isSubmit) {
         let name =$("#kh_ten").val();
