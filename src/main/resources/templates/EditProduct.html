@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="/css/postproduct.css">
+<div class="container">
+  <div class="row">
+    <h2 class="p-3 d-flex justify-content-center">Sản Phẩm</h2>
+  </div>
+  <form id="product-form" class="row">
+    <div class="col-8">
+      <div>
+        <label>Tên Sản Phẩm</label> <br>
+        <input class="input" type="text" placeholder="Tên sản phẩm" name="name" th:value="${product.name}">
+        <span></span>
+      </div>
+      <div>
+        <label>Giá Sản Phẩm</label> <br>
+        <input class="input" type="number" min="0" placeholder="Giá sản phẩm" name="price" th:value="${product.price}">
+        <span></span>
+      </div>
+      <div>
+        <label>Mô tả</label> <br>
+        <textarea class="input" placeholder="Mô tả" name="productDescription" th:text="${product. productDescription}"></textarea>
+        <span></span>
+      </div>
+      <div>
+        <label>Số lượng </label> <br>
+        <input class="input" type="number" min="0" placeholder="Số lượng" name="inventoryCount" th:value="${product.inventoryCount}">
+        <span></span>
+      </div>
+    </div>
+    <div class="col-4" style="position: relative">
+      <button type="button" class="btn btn-dark">
+        <label for="file-input">Ảnh bìa sản phẩm</label>
+      </button>
+      <input placeholder="ảnh bìa" hidden type="file" name="image" id="file-input">
+      <span></span>
+      <div class="show-img d-flex justify-content-center align-content-center">
+        <img th:src="@{'data:image/png;base64,' + ${product.imgBase64}}" alt="Chưa có ảnh nào" id="preview-image">
+      </div>
+      <script>
+        const fileInput = document.getElementById('file-input');
+        const previewImage = document.getElementById('preview-image');
+        fileInput.addEventListener('change', function() {
+          const file = fileInput.files[0];
+          const reader = new FileReader();
+
+          reader.addEventListener('load', function() {
+            previewImage.src = reader.result;
+          }, false);
+
+          if (file) {
+            reader.readAsDataURL(file);
+          }
+        });
+      </script>
+      <button type="submit" class="btn btn-danger" style="position: absolute; bottom: 10px; left: 10px">
+        Cập Nhật <i class="fa-solid fa-arrow-up"></i>
+      </button>
+    </div>
+    <span th:data-id="${product.id}" id="id"></span>
+  </form>
+
+</div>
+</div>
+<script src="/js/editProduct.js"></script>

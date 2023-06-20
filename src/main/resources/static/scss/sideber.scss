@@ -45,3 +45,20 @@
 #sidebar header a:hover {
   color: #fff;
 }
+ul{
+  list-style: none;
+  a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    &:hover{
+      color: #6a1a21;
+    }
+  }
+  li{
+    padding: 10px 0px;
+  }
+}
+input {
+
+}

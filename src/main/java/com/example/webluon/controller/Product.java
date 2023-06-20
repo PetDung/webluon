@@ -18,7 +18,7 @@ public class Product {
     ProductRepository productRepository;
     @GetMapping("")
     public String index(Model mode){
-        List<ProductEntity> listProduct = productRepository.findAll();
+        List<ProductEntity> listProduct = productRepository.findAllByHidden(1);
         mode.addAttribute("listProduct", listProduct);
         mode.addAttribute("page", "Product");
         return  "Common";

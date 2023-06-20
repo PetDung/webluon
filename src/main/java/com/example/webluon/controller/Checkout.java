@@ -10,6 +10,7 @@ import com.example.webluon.repositories.InvoicesRepository;
 import com.example.webluon.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -39,7 +40,8 @@ public class Checkout {
         invoices.setNumberPhone(order.getNumberPhone());
         invoices.setNameCustom(order.getName());
         invoices.setEmail(order.getEmail());
-        invoices.setType(order.getType());
+        invoices.setTypePay(order.getType());
+        invoices.setAddress(order.getAddress());
         invoices.setSumPrice(order.getSumPrice());
         invoicesRepository.save(invoices);
 
@@ -51,10 +53,14 @@ public class Checkout {
             invoiceItemEntity.setInvoices(invoices);
             invoiceItemEntity.setQuanty(order.getQuanty().get(Math.toIntExact(id)));
             invoiceItemEntity.setProduct(productEntity);
-            invoiceItemEntity.setIsPay(0);
             invoiceItemRepository.save(invoiceItemEntity);
         }
         return "Home";
+    }
+    @GetMapping("/succ")
+    public String succ(Model model){
+        model.addAttribute("page","CheckoutSucc");
+        return "Common" ;
     }
 }
 

@@ -23,6 +23,12 @@ public class ProductEntity extends BaseEntity {
     private String productDescription;
     @Column
     private int inventoryCount;
+    @Column
+    private int hidden = 1;
+
+    @Lob
+    @Column(length=1048576)
+    private String imgBase64;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<InvoiceItemEntity> listInvoice = new ArrayList<>();

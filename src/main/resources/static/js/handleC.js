@@ -27,7 +27,6 @@ function getProductToLocalStorage(){
     let sumPrice= getProductToLocalStorage().sumPrice;
     let listProduct = getProductToLocalStorage().listProduct;
     let count =getProductToLocalStorage().count;
-    console.log(getProductToLocalStorage());
     let elistProduct = document.querySelector(".list-product");
     let esumPrice =document.querySelector(".sum-price");
     let html="";
@@ -35,7 +34,7 @@ function getProductToLocalStorage(){
         html +=`
                     <div class="item-product">
                           <div class="item-img">
-                             <img src="/img/product.jpg" alt="">
+                             <img src=${product.imgBase64} alt=""/>
                           </div>
                              <div class="item-info">
                                   <span class="name">${product.name}</span>
@@ -48,11 +47,12 @@ function getProductToLocalStorage(){
     elistProduct.innerHTML=html;
     esumPrice.innerHTML=sumPrice;
 }
-function  addCartProduct(id,name,price,quanty=1){
+function  addCartProduct(id,name,price,imgBase64,quanty=1,){
     const product = {
         name,
         id : parseInt(id),
         price: Number(price),
+        imgBase64,
     }
     quanty=Number(quanty);
     let length = product.id + 1;
@@ -117,10 +117,12 @@ products.forEach(product=>{
     let id=product.querySelector("span").getAttribute("data-id");
     let name =product.querySelector(".name").innerHTML
     let price =product.querySelector(".price").innerHTML
+    let imgBase64 = product.querySelector(".img-base64").getAttribute("src");
     product.addEventListener('click', function(event) {
         if (event.target.classList.contains('fa-cart-plus')) {
-            addCartProduct(id,name,price);
+            addCartProduct(id,name,price,imgBase64);
         } else if (event.target.classList.contains('btn-product')) {
+            addCartProduct(id,name,price,imgBase64);
             location.href=`/checkout`;
         }
         else{
@@ -147,7 +149,8 @@ if(add){
         quanty = parseInt(quanty);
         let name = document.querySelector("#name").innerHTML;
         let price = document.querySelector("#price").getAttribute("data-price");
-        addCartProduct(id,name,price,quanty);
+        let imgBase64 =document.querySelector("#img").getAttribute("src");
+        addCartProduct(id,name,price,imgBase64,quanty);
     }
 }
 document.addEventListener('touchstart', function(event) {

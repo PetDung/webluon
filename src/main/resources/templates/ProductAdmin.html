@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/css/listproduct.css">
+<div class="container">
+  <div class="row products">
+    <div class="title col-12 d-flex justify-content-center mb-5"><h1>Sản Phẩm Trong Kho</h1> </div>
+    <div class="title col-12 d-flex justify-content-center mb-5">
+      <a href="/admin/listproduct"><button class="btn">Sản phẩm đang hiển thị</button></a>
+      <a href="/admin/listproduct-hidden"><button class="btn">Sản phẩm  bị ẩn</button></a>
+    </div>
+    <div class="row my-products ">
+      <div class="col-lg-3 col-6 col-md-4" th:each="product : ${listProduct}">
+        <div class="product" >
+          <img class="img-base64" th:src="@{'data:image/png;base64,' + ${product.imgBase64}}"/>
+          <div class="info-product">
+            <h5 class="name" th:text="${product.name}"></h5>
+            <p class="price" th:text="${product.price}"></p>
+            <div class="action">
+              <button class="remove icon"><i class="fa-solid fa-trash"></i></i></button>
+            </div>
+          </div>
+          <span class="id" th:data-id="${product.id}"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/productadmin.js"></script>

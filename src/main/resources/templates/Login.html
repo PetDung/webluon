@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="/css/reset.css">
+<div id="wrapper">
+  <form id="form-login" method="POST" th:action="@{/j_spring_security_check}">
+    <h1 class="form-heading">Đăng Nhập</h1>
+    <span id="log"></span>
+    <div class="form-group">
+      <i class="far fa-user"></i>
+      <input type="text" class="form-input" placeholder="Tên đăng nhập" name="username" id="name">
+    </div>
+    <div class="form-group">
+      <i class="fas fa-key"></i>
+      <input type="password" class="form-input" placeholder="Mật khẩu" name="password" id="password">
+      <div id="eye">
+        <i class="far fa-eye"></i>
+      </div>
+    </div>
+    <input type="submit" value="Đăng nhập" class="form-submit">
+  </form>
+</div>
+<script src="/js/login.js"></script>

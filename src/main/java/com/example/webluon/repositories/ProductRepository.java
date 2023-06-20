@@ -12,6 +12,7 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends CrudRepository<ProductEntity, Long> {
    List<ProductEntity> findAll();
+   List<ProductEntity> findAllByHidden(int hidden);
 
    @Override
    Optional<ProductEntity> findById(Long id);

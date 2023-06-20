@@ -24,7 +24,5 @@ public class    InvoiceItemEntity extends BaseEntity{
     @Column
     private  int quanty;
 
-    @Column
-    private int isPay;
 
 }

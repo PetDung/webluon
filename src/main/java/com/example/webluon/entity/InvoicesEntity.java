@@ -24,10 +24,16 @@ public class InvoicesEntity extends BaseEntity {
     private String numberPhone;
 
     @Column
+    private  String address;
+
+    @Column
     private Double sumPrice;
 
     @Column
-    private int type;
+    private int type=0;
+
+    @Column
+    private int typePay;
 
 
     @Column(columnDefinition = "TEXT")

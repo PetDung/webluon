@@ -29,7 +29,7 @@ let renderListProduct =()=>{
         html+=`
              <div class="col-12 my-product ">
                 <div class="img">
-                    <img class="img_my-product" src="/img/product.jpg" alt="No Img">
+                    <img class="img_my-product" src=${product.imgBase64} alt="No Img">
                 </div>
                 <div class="info_my-product">
                     <div class="name-product">
@@ -60,7 +60,13 @@ let renderListProduct =()=>{
     })
     let  prodcuts = document.querySelector(".prodcuts");
     if ( html != "") {
-        prodcuts.innerHTML=html + `<span class="sum-price-of-checkout" >Tổng tiền ${sumPrice}đ</span>`;
+        prodcuts.innerHTML=html +
+            `   <span class="sum-price-of-checkout" >Tổng tiền ${sumPrice}đ</span> 
+                <div class="checkout">
+                    <a href="/checkout">
+                        <button class="btn-checkout">Thanh Toán</button>
+                    </a>
+                </div>`;
     }else {
         prodcuts.innerHTML = "<p>Giỏ Hàng Trống</p>" +
                              "<a href='/product'>Mua hàng tại đây</a>"

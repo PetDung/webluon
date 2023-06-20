@@ -117,6 +117,11 @@ formCheckout.onsubmit =(e)=>{
                 input.nextElementSibling.innerHTML="Vui lòng nhập đúng số điện thoại";
         }else isSubmit=true;
     })
+    let listProduct = JSON.parse(localStorage.getItem("listProduct"));
+    if(listProduct.length < 1) {
+        isSubmit =false;
+        alert("Vui lòng chọn sản phẩm để mua. Giỏ hàng trống!");
+    }
     if(isSubmit) {
         let name =$("#kh_ten").val();
         let address = $("#kh_diachi").val();
@@ -153,7 +158,9 @@ formCheckout.onsubmit =(e)=>{
             contentType: 'application/json',
             data: JSON.stringify(formSubmit),
             success: function(response) {
-                alert("Submit thành công!");
+                alert("Đặt hàng thành công!");
+                localStorage.clear();
+                location.href="/checkout/succ";
             },
             error: function(xhr, status, error) {
                 console.log(error);
