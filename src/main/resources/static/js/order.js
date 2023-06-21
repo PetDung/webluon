@@ -10,14 +10,21 @@ let isPay =(id)=>{
         },
     });
 }
+let isShip =(id)=>{
+    $.ajax({
+        url: `/admin/ship/${id}`,
+        type: 'PUT',
+        success: function(product) {
+            console.log("oke");
+        },
+        error: function(xhr, status, error) {
+            console.error('Error: ' , error);
+        },
+    });
+}
 function togglePaymentStatus(button) {
     let id = button.getAttribute("data-id");
     isPay(id);
-    let idFather = button.getAttribute("data-remove");
-    let father = document.getElementById(idFather);
-    let product = father.nextElementSibling;
-    father.remove();
-    product.remove();
     if (button.classList.contains('unpaid')) {
         button.classList.remove('unpaid');
         button.classList.add('paid');
@@ -28,3 +35,8 @@ function togglePaymentStatus(button) {
         button.classList.add('unpaid');
         button.textContent = 'Chưa thanh toán';
     }}
+function toggleShipmentStatus(button) {
+    let id = button.getAttribute("data-id");
+    isShip(id);
+    $("#ship").text('Giao hàng thành công');
+}

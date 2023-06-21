@@ -34,6 +34,8 @@ public class InvoicesEntity extends BaseEntity {
 
     @Column
     private int typePay;
+    @Column
+    private int isShip = 0;
 
 
     @Column(columnDefinition = "TEXT")

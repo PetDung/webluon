@@ -3,8 +3,10 @@
   <div class="row order">
     <div class="col-12 d-flex justify-content-center m-4"><h1>Đơn Hàng Của Bạn</h1></div>
     <div class="col-12 d-flex justify-content-center">
-      <a href="/admin/pay"><h5 th:id="${pay}" class="m-3 type-pay">Chờ thanh toán</h5></a>
-      <a href="/admin/unpay"><h5 th:id ="${unpay}" class="m-3  type-pay">Đã thanh toán</h5></a>
+      <a href="/admin/all-order"><h5 th:id="${all}" class="m-3 type-pay">Tất cả đơn hàng</h5></a>
+      <a href="/admin/unpay"><h5 th:id="${unpay}" class="m-3 type-pay">Chờ thanh toán</h5></a>
+      <a href="/admin/pay"><h5 th:id ="${pay}" class="m-3  type-pay">Đã thanh toán</h5></a>
+      <a href="/admin/ship"><h5 th:id ="${ship}" class="m-3  type-pay">Giao thành công</h5></a>
     </div>
     <div class="col-12">
       <table>
@@ -18,7 +20,7 @@
           <th>Trạng Thái </th>
         </tr>
         <div th:each="order,index : ${listOrder}">
-          <div >
+          <div>
             <tr th:id="${index.index +1 }">
               <td th:text="${index.index +1 }"></td>
               <td th:text="${order.invoice.nameCustom}"></td>
@@ -28,7 +30,8 @@
               <td th:text="${order.invoice.createdAt}"></td>
               <td >
                 <div class="isPay">
-                  <button th:if="${order.invoice.type == 1}"
+                  <button
+                          th:if="${order.invoice.type == 1 && order.invoice.isShip == 0}"
                           th:data-id="${order.invoice.id}"
                           th:data-remove="${index.index +1 }"
                           class="payment-button paid"
@@ -36,13 +39,14 @@
                     Đã Thanh Toán
                   </button>
                   <button
-                          th:if="${order.invoice.type == 0}"
+                          th:if="${order.invoice.type == 0 && order.invoice.isShip == 0}"
                           th:data-id="${order.invoice.id}"
                           th:data-remove="${index.index +1 }"
                           class="payment-button unpaid"
                           onclick="togglePaymentStatus(this)">
                     Chưa thanh toán
                   </button>
+                  <div th:if="${order.invoice.isShip == 1}" >Đã thanh toán</div>
                 </div>
                 <style>
                   .payment-button {
@@ -68,7 +72,8 @@
               <th colspan="7">
                 <div style="font-size: 16px; color: red" class="p-3">
                   <span th:if="${order.invoice.typePay ==1}">Ship cod</span>
-                  <span th:if="${order.invoice.typePay ==2}">Chuyển khoản ngân hàng</span>
+                  <span th:if="${order.invoice.typePay ==2}">Chuyển khoản ngân hàng</span><br>
+                  <span style="color: black" th:if="${order.invoice.typePay ==2}">Nội dung bank: hoaxunafood <span th:text="${order.invoice.numberPhone}"></span></span>
                 </div>
                 <div class="product" th:each="product : ${order.listProductOutput}">
                   <img th:src="@{'data:image/png;base64,' + ${product[0].imgBase64}}" alt="chưa có ảnh"/>
@@ -79,6 +84,17 @@
                   </div>
                 </div>
                 <div style="font-size: 22px;">Tổng tiền: <span style="color:red;" th:text="${order.invoice.sumPrice}"></span></div>
+                <div id="ship">
+                  <button
+                          th:if="${order.invoice.isShip == 0}"
+                          th:data-id="${order.invoice.id}"
+                          th:data-remove="${index.index +1 }"
+                          class="payment-button ship mt-3"
+                          onclick="toggleShipmentStatus(this)">
+                    Giao Thành Công
+                  </button>
+                  <div style="color: red;" th:if="${order.invoice.isShip == 1}" >Giao hang thanh cong</div>
+                </div>
               </th>
             </tr>
           </div>

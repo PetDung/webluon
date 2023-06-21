@@ -118,7 +118,7 @@ public class Admin {
     @GetMapping("/pay")
     public String pay(Model model){
         List<OrdersOutput> listOrders = new ArrayList<>();
-        List<InvoicesEntity> listInvoice = invoicesRepository.findAllByType(0);
+        List<InvoicesEntity> listInvoice = invoicesRepository.findAllTypeTrue();
         for(InvoicesEntity item : listInvoice){
             List<Object[]> listProduct = productRepository.findOrderedProducts(item.getId());
             OrdersOutput ordersOutput = new OrdersOutput();
@@ -129,14 +129,30 @@ public class Admin {
         model.addAttribute("listOrder",listOrders);
         model.addAttribute("page","Pay");
         model.addAttribute("pay","action");
-        model.addAttribute("unpay","no-action");
+        return "Admin" ;
+
+    }
+    @GetMapping("/all-order")
+    public String All(Model model){
+        List<OrdersOutput> listOrders = new ArrayList<>();
+        List<InvoicesEntity> listInvoice = invoicesRepository.findAll();
+        for(InvoicesEntity item : listInvoice){
+            List<Object[]> listProduct = productRepository.findOrderedProducts(item.getId());
+            OrdersOutput ordersOutput = new OrdersOutput();
+            ordersOutput.setInvoice(item);
+            ordersOutput.setListProductOutput(listProduct);
+            listOrders.add(ordersOutput);
+        }
+        model.addAttribute("listOrder",listOrders);
+        model.addAttribute("page","Pay");
+        model.addAttribute("all","action");
         return "Admin" ;
 
     }
     @GetMapping("/unpay")
     public String unPay(Model model){
         List<OrdersOutput> listOrders = new ArrayList<>();
-        List<InvoicesEntity> listInvoice = invoicesRepository.findAllByType(1);
+        List<InvoicesEntity> listInvoice = invoicesRepository.findAllByType(0);
         for(InvoicesEntity item : listInvoice){
             List<Object[]> listProduct = productRepository.findOrderedProducts(item.getId());
             OrdersOutput ordersOutput = new OrdersOutput();
@@ -147,20 +163,44 @@ public class Admin {
         model.addAttribute("listOrder",listOrders);
         model.addAttribute("page","Pay");
         model.addAttribute("unpay","action");
-        model.addAttribute("pay","no-action");
+        return "Admin" ;
 
+    }
+    @GetMapping("/ship")
+    public String ship(Model model){
+        List<OrdersOutput> listOrders = new ArrayList<>();
+        List<InvoicesEntity> listInvoice = invoicesRepository.findAllByIsShip(1);
+        for(InvoicesEntity item : listInvoice){
+            List<Object[]> listProduct = productRepository.findOrderedProducts(item.getId());
+            OrdersOutput ordersOutput = new OrdersOutput();
+            ordersOutput.setInvoice(item);
+            ordersOutput.setListProductOutput(listProduct);
+            listOrders.add(ordersOutput);
+        }
+        model.addAttribute("listOrder",listOrders);
+        model.addAttribute("page","Pay");
+        model.addAttribute("ship","action");
         return "Admin" ;
 
     }
     @PutMapping("/pay/{id}")
     @ResponseBody
     public String isPay(@PathVariable("id") Long id){
-        System.out.println(id);
         Optional<InvoicesEntity> invoicesOpp = invoicesRepository.findById(id);
         InvoicesEntity invoicesEntity = invoicesOpp.get();
         int type = invoicesEntity.getType();
         if(type==1) invoicesEntity.setType(0);
         else invoicesEntity.setType(1);
+        invoicesRepository.save(invoicesEntity);
+        return "oke";
+    }
+    @PutMapping("/ship/{id}")
+    @ResponseBody
+    public String isShip(@PathVariable("id") Long id){
+        Optional<InvoicesEntity> invoicesOpp = invoicesRepository.findById(id);
+        InvoicesEntity invoicesEntity = invoicesOpp.get();
+        invoicesEntity.setType(1);
+        invoicesEntity.setIsShip(1);
         invoicesRepository.save(invoicesEntity);
         return "oke";
     }

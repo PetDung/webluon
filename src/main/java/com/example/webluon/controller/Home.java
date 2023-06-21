@@ -2,14 +2,19 @@ package com.example.webluon.controller;
 
 import com.example.webluon.entity.ProductEntity;
 import com.example.webluon.repositories.ProductRepository;
+import com.maxmind.geoip2.DatabaseReader;
+import com.maxmind.geoip2.exception.AddressNotFoundException;
+import com.maxmind.geoip2.exception.GeoIp2Exception;
+import com.maxmind.geoip2.model.CityResponse;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+
 
 import java.io.IOException;
-import java.util.Base64;
+import java.net.InetAddress;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,9 +23,22 @@ public class Home {
 
     @Autowired
     ProductRepository productRepository;
+    @Autowired
+    DatabaseReader databaseReader;
     @GetMapping("/")
-    public String index(Model mode){
+    public String index(Model mode, HttpServletRequest request) throws IOException, GeoIp2Exception {
         List<ProductEntity> listProduct = productRepository.findAllByHidden(1);
+        String ipAddress = request.getRemoteAddr();
+        try {
+            InetAddress ip = InetAddress.getByName("216.58.194.174");
+            CityResponse response = databaseReader.city(ip);
+            String countryIsoCode = response.getCountry().getIsoCode();
+            String cityName = response.getCity().getName();
+            System.out.println(cityName);
+        }catch (AddressNotFoundException e){
+            System.out.println(e);
+
+        }
         mode.addAttribute("listProduct", listProduct);
         mode.addAttribute("page","Home");
         return  "Common";
