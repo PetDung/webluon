@@ -114,16 +114,13 @@ function removeProduct(id){
 renderCart();
 let products = document.querySelectorAll(".product");
 products.forEach(product=>{
-    let id=product.querySelector("span").getAttribute("data-id");
+    let id=product.querySelector(".id").getAttribute("data-id");
     let name =product.querySelector(".name").innerHTML
-    let price =product.querySelector(".price").innerHTML
+    let price =product.querySelector("#price").innerHTML
     let imgBase64 = product.querySelector(".img-base64").getAttribute("src");
     product.addEventListener('click', function(event) {
-        if (event.target.classList.contains('fa-cart-plus')) {
+        if (event.target.classList.contains('add-cart')) {
             addCartProduct(id,name,price,imgBase64);
-        } else if (event.target.classList.contains('btn-product')) {
-            addCartProduct(id,name,price,imgBase64);
-            location.href=`/checkout`;
         }
         else{
             location.href=`/${id}`;

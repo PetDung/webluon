@@ -30,10 +30,15 @@ public class Admin {
 
     @GetMapping("")
     public String index(Model model){
-        model.addAttribute("page","PostProduct");
+        model.addAttribute("page","adminHome");
         return "Admin" ;
     }
 
+    @GetMapping("/postproduct")
+    public String postProduct(Model model){
+        model.addAttribute("page","PostProduct");
+        return "Admin" ;
+    }
     @GetMapping("/login")
     public String login(Model model){
         model.addAttribute("page","Login");

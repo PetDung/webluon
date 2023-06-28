@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row products">
+  <div class="products">
     <div class="title col-12 d-flex justify-content-center mb-5"><h1>Sản Phẩm</h1> </div>
 <!--    <div class="row type justify-content-center">-->
 <!--      <div class="col-md-2 text-center type-item">-->
@@ -20,16 +20,14 @@
 <!--      </div>-->
 <!--    </div>-->
     <div class="row my-products ">
-      <div class="col-lg-3 col-6 col-md-4" th:each="product : ${listProduct}">
+      <div class="col-6 col-lg-3" th:each="product : ${listProduct}">
         <div class="product" >
           <img class="img-base64" th:src="@{'data:image/png;base64,' + ${product.imgBase64}}"/>
           <div class="info-product">
-            <h5 class="name" th:text="${product.name}"></h5>
-            <p class="price" th:text="${product.price}"></p>
+            <div class="name" th:text="${product.name}"></div>
+            <div class="price" ><span id="price" th:text="${product.price}"></span>00đ</div>
             <div class="action">
-              <button class="add-cart"><i class="fa-solid fa-cart-plus"></i></button>
-              <button class="btn btn-product">Mua Ngay</button>
-
+              <button class="add-cart"><i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng</button>
             </div>
           </div>
           <span class="id" th:data-id="${product.id}"></span>

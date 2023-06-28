@@ -219,18 +219,34 @@ img{
     }
 }
 .products{
+    img {
+        width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+    }
     .type{
         margin: 24px 0;
     }
     .product{
-        position: relative;
+        padding: 16px;
         border: 1px solid #ffffff;
-        background-color: #eeeeee;
-        overflow: hidden;
+        background-color: #FFF;
         margin-bottom: 30px;
         color:black;
+        height: 100%;
+        transition: all 0.5s linear;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 12px;
+        &:hover{
+        box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px;
+        transform: scale(1.05);
+            &:hover .add-cart{
+                opacity: 1;
+            }
+    }
 
     }
+
     .line{
         width: 0%;
         display: block;
@@ -250,44 +266,39 @@ img{
     }
     .info-product{
         text-align: center;
-        background: #eee;
-        margin-top: -45px;
-        padding: 10px;
-        transform: translateY(0);
-        transition: transform  0.5s ease-in-out;
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 16px;
         .action{
-            display: none;
+            display: flex;
             justify-content: space-evenly;
 
         }
-        @media (min-width: 768px){
-            .action{
-                display: flex;
-            }
-            &{
-                transform: translateY(55px);
-            }
-        }
-        .btn{
-            border: 1px solid crimson;
-            border-radius: 20px;
-            font-size: 18px;
-            &:hover{
-                color: white;
-                border: 1px solid white;
-            }
-        }
         .add-cart{
-            font-size: 26px;
+            font-size: 18px;
+            padding: 9px 18px;
+            background: #05b638;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.2s linear ;
+
         }
-        .add-cart:hover{
-            color: white;
+        .name{
+            font-size: 20px;
+            font-weight: 400;
         }
-        &:hover{
-            transform: translateY(0);
-            background: #89ce2a;
+        .price{
+            font-size: 22px;
+            font-weight: 700;
+            color: #2e2e6f;
+        }
+        @media (max-width: 760px) {
+           .add-cart{
+               display: none;
+           }
         }
     }
+
 }
 .footer{
     background-image: url("https://theme.hstatic.net/1000221193/1000455493/14/ft_bg_img.png?v=1137" );
@@ -335,5 +346,10 @@ img{
 
             object-fit: cover;
         }
+    }
+}
+@media (max-width: 1200px){
+    .container, .container-sm {
+        max-width: 100%;
     }
 }
